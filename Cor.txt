@@ -1,0 +1,4 @@
+000001Preto
+000002Azul
+000003Amarelo
+000004Vermelho
