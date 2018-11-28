@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D3052B97-C3AA-4568-A9C6-895417188176}</ProjectGuid>
+    <ProjectGuid>{EAC2E01C-6960-4344-B781-F5CB1CDF55B9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Oficina.Dominio</RootNamespace>
@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Cambio.cs" />
     <Compile Include="Combustivel.cs" />
-    <Compile Include="cor.cs" />
+    <Compile Include="Cor.cs" />
     <Compile Include="Marca.cs" />
     <Compile Include="Modelo.cs" />
     <Compile Include="Veiculo.cs" />

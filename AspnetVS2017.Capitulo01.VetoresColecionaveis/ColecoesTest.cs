@@ -55,7 +55,7 @@ namespace AspnetVS2017.Capitulo01.VetoresColecionaveis
 
             var feriados = new Dictionary<DateTime, string>();
 
-            feriados.Add(new DateTime(2018,21,25), "Natal");
+            feriados.Add(new DateTime(2018,12,25), "Natal");
             feriados.Add(new DateTime(2019, 1, 1), "Ano Novo");
             feriados.Add(new DateTime(2019, 3, 14), "Pascoa");
 
