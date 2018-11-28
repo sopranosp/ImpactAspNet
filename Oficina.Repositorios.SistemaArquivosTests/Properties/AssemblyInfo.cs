@@ -4,23 +4,23 @@ using System.Runtime.InteropServices;
 
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
-// associada a um assembly.
-[assembly: AssemblyTitle("Oficina.Repositorios.SistemaArquivos")]
+// associadas ao assembly.
+[assembly: AssemblyTitle("Oficina.Repositorios.SistemaArquivosTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Oficina.Repositorios.SistemaArquivos")]
+[assembly: AssemblyProduct("Oficina.Repositorios.SistemaArquivosTests")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Definir ComVisible como false torna os tipos neste assembly invisíveis
-// para componentes COM. Caso precise acessar um tipo neste assembly de
+// Definir ComVisible como false torna invisíveis os tipos neste assembly
+// para componentes COM.  Caso precise acessar um tipo neste assembly a partir de 
 // COM, defina o atributo ComVisible como true nesse tipo.
 [assembly: ComVisible(false)]
 
 // O GUID a seguir será destinado à ID de typelib se este projeto for exposto para COM
-[assembly: Guid("4bf15321-a070-4b4e-a77f-9f26d69eaf2b")]
+[assembly: Guid("9dab1fe0-0b5a-46b2-8cef-6ac7ce1ac00f")]
 
 // As informações da versão de um assembly consistem nos quatro valores a seguir:
 //
@@ -29,8 +29,8 @@ using System.Runtime.InteropServices;
 //      Número da Versão
 //      Revisão
 //
-// É possível especificar todos os valores ou usar como padrão os Números de Build e da Revisão
-// usando o '*' como mostrado abaixo:
+// É possível especificar todos os valores ou usar como padrão os Números da Versão e da Revisão 
+// utilizando o "*" como mostrado abaixo:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
