@@ -13,7 +13,7 @@ namespace Oficina.Repositorios.SistemaArquivos
         //to do implementar metodo de extensão
 
         private string caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-            ConfigurationManager.AppSettings["caminhoArquivoModelo"]);
+            ConfigurationManager.AppSettings["caminhoArquivoCor"]);
 
         public List<Cor> Selecionar()
         {

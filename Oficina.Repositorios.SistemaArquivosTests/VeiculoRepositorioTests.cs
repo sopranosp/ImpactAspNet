@@ -21,7 +21,7 @@ namespace Oficina.Repositorios.SistemaArquivos.Tests
         [TestMethod()]
         public void InserirTest()
         {
-            var veiculo = new Veiculo();
+            var veiculo = new VeiculoPasseio();
 
             //veiculo.Id = 1;
            
@@ -30,6 +30,7 @@ namespace Oficina.Repositorios.SistemaArquivos.Tests
             veiculo.Combustivel = Combustivel.Alcool;
             veiculo.Observacao = "Observação";
             veiculo.Placa = "CTM4010";
+            veiculo.Carroceria = Carroceria.Hatch;
 
             veiculo.Cor = new CorRepositorio().Selecionar(1);
             veiculo.Modelo = new ModeloRepositorio().Selecionar(1);

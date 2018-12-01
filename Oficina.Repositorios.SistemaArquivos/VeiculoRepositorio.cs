@@ -1,7 +1,6 @@
 ﻿using Oficina.Dominio;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -20,21 +19,20 @@ namespace Oficina.Repositorios.SistemaArquivos
         public VeiculoRepositorio()
         {
             caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-            ConfigurationManager.AppSettings["caminhoArquivoVeiculo"]);
-
-
+                AppSettings["caminhoArquivoVeiculo"]);
         }
 
-        public void Inserir(Veiculo veiculo)
+        public void Inserir<T>(T veiculo ) where T: Veiculo
         {
             arquivoXml = XDocument.Load(caminhoArquivo);
 
             var registro = new StringWriter();
-            new XmlSerializer(typeof(Veiculo)).Serialize(registro,veiculo);
+
+            new XmlSerializer(typeof(T)).Serialize(registro,veiculo);
+
             arquivoXml.Root.Add(XElement.Parse(registro.ToString()));
 
             arquivoXml.Save(caminhoArquivo);
-
         }
     }
 }

@@ -1,0 +1,4 @@
+﻿C:\Users\no4807\source\repos\ImpactAspNet\Oficina.Repositorios.SistemaArquivos\Oficina.Repositorios.SistemaArquivos.csproj : error  : Não foi possível carregar o arquivo de projeto. Um nome não pode ser iniciado pelo caractere '<', valor hexadecimal 0x3C. Linha 47, posição 2.  C:\Users\no4807\source\repos\ImpactAspNet\Oficina.Repositorios.SistemaArquivos\Oficina.Repositorios.SistemaArquivos.csproj
+
+C:\Users\no4807\source\repos\ImpactAspNet\Oficina.Repositorios.SistemaArquivosTests\Oficina.Repositorios.SistemaArquivosTests.csproj : error  : Não foi possível carregar o arquivo de projeto. Um nome não pode ser iniciado pelo caractere '<', valor hexadecimal 0x3C. Linha 61, posição 2.  C:\Users\no4807\source\repos\ImpactAspNet\Oficina.Repositorios.SistemaArquivosTests\Oficina.Repositorios.SistemaArquivosTests.csproj
+

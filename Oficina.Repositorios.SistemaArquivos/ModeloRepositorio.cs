@@ -25,7 +25,7 @@ namespace Oficina.Repositorios.SistemaArquivos
         public List<Modelo> SelecionarPorMarca(int marcaId)
         {
             var modelos = new List<Modelo>();
-            foreach (var elemento in arquivoXml.Descendants("Modelo"))
+            foreach (var elemento in arquivoXml.Descendants("modelo"))
             {
                 if (marcaId.ToString() == elemento.Element("marcaId").Value)
                 {
