@@ -1,1 +1,6 @@
-﻿========== Compilar: 0 com êxito, 0 com falha, 1 atualizados, 0 ignorados ==========
+﻿1>------ Compilação iniciada: Projeto: Portfolio (Portfolio\Portfolio), Configuração: Debug Any CPU ------
+2>------ Compilação iniciada: Projeto: ViagensOnlineMvc, Configuração: Debug Any CPU ------
+1>		Portfolio -> C:\Users\no4807\source\repos\ImpactAspNet\Portfolio\bin\Debug\Portfolio.dll
+1>		Portfolio -> C:\Users\no4807\source\repos\ImpactAspNet\Portfolio\bin\Debug\Portfolio.dacpac
+2>  ViagensOnlineMvc -> C:\Users\no4807\source\repos\ImpactAspNet\ViagensOnlineMvc\bin\ViagensOnlineMvc.dll
+========== Compilar: 2 com êxito, 0 com falha, 14 atualizados, 0 ignorados ==========

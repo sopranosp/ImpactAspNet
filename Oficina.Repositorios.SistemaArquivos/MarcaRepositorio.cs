@@ -7,10 +7,17 @@ using static System.Configuration.ConfigurationManager;
 
 namespace Oficina.Repositorios.SistemaArquivos
 {
-    public class MarcaRepositorio
+    public class MarcaRepositorio :Repositoriobase
     {
-        private string caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-            ConfigurationManager.AppSettings["caminhoArquivoMarca"]);
+
+        //public MarcaRepositorio()
+
+        //{
+        //    caminhoArquivo = ObterCaminhoCompleto("Caminho");
+        //}
+
+        private string caminhoArquivo=Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+        ConfigurationManager.AppSettings["caminhoArquivoMarca"]);
 
 
         public List<Marca> Selecionar()

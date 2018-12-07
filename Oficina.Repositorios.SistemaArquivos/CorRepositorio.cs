@@ -7,13 +7,23 @@ using static System.Configuration.ConfigurationManager;
 
 namespace Oficina.Repositorios.SistemaArquivos
 {
-    public class CorRepositorio
+    public class CorRepositorio : Repositoriobase
     {
 
-        //to do implementar metodo de extensão
+        // ToDo implementar metodo de extensão
 
-        private string caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-            ConfigurationManager.AppSettings["caminhoArquivoCor"]);
+        //private string caminhoArquivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+        //    ConfigurationManager.AppSettings["caminhoArquivoCor"]);
+
+
+        private string caminhoArquivo;
+
+        public CorRepositorio()
+        {
+            caminhoArquivo = ObterCaminhoCompleto("CaminhoCor");
+        }
+
+        //ToDo poliformismo por sobrecarga
 
         public List<Cor> Selecionar()
         {

@@ -9,7 +9,7 @@
 }
 
 <!DOCTYPE html>
-@*bla bla bla*@ 
+@*bla bla bla*@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <style>
 
-        bode {
+        body {
             font-size: 16PX;
             font-family: 'Montserrat', sans-serif;
         }
@@ -37,18 +37,42 @@
             input[type=submit] {
                 width: 300px;
             }
+
+        #mensagemerro {
+          
+            height: 40px;
+            background-color: #dc3545;
+            width:35px;
+            margin-bottom=10px;
+            color:azure;
+            text-align:center;
+            vertical-align:middle;
+            line-height: 40px;
+
+
+        }
     </style>
 </head>
 <body>
     @if (IsPost)
     {
-        veiculoAplicacao.Inserir();
-        Response.Redirect("Veiculo");
+        try
+        {
+            veiculoAplicacao.Inserir();
+            Response.Redirect("Veiculo");
+        }
+        catch (Exception)
+        {
+
+            <div id="mensagemerro">  @HttpContext.Current.Items["Mensagem Erro"] </div>
+
+            throw;
+        }
     }
 
     <h1> Cadastro de Veiculo</h1>
     <hr />
-    <form  method="post">
+    <form method="post">
         <label for="marca">Marca</label>
         <select name="marca" onchange="obterModelos(this.value)">
             <option value="">Selecione</option>
@@ -73,9 +97,16 @@
         <br />
 
         <label for="placa"> Placa</label>
-        <input type="text" name="placa" value="" id="placa" />
-        <br />     <label for="ano"> Ano</label>
-        <input type="text" name="ano" value="" id="ano" />
+
+        <input type="text" name="placa" value=" @Request.Form["placa"]" id="placa" />
+
+
+        <br /> 
+        
+        <label for="ano"> Ano</label>
+        <input type="text" name="ano" value=" @Request.Form["ano"]" id="ano" />
+
+
         <br />
         <br />
         <label for="cor">Cores</label>
@@ -84,7 +115,7 @@
             @foreach (var Cor in veiculoAplicacao.Cores)
 
             {
-                <option value="@Cor.Id">@Cor.Nome </option>
+                <option value="@Cor.Id" selected="@Convert.ToBoolean(Cor.Id.ToString() == Request.Form["cor"])" >@Cor.Nome </option>
 
             }
         </select>
