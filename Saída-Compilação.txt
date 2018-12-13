@@ -1,6 +1,9 @@
 ﻿1>------ Compilação iniciada: Projeto: Portfolio (Portfolio\Portfolio), Configuração: Debug Any CPU ------
-2>------ Compilação iniciada: Projeto: ViagensOnlineMvc, Configuração: Debug Any CPU ------
+2>------ Compilação iniciada: Projeto: Loja.Repositorio.SqlServerTests, Configuração: Debug Any CPU ------
 1>		Portfolio -> C:\Users\no4807\source\repos\ImpactAspNet\Portfolio\bin\Debug\Portfolio.dll
 1>		Portfolio -> C:\Users\no4807\source\repos\ImpactAspNet\Portfolio\bin\Debug\Portfolio.dacpac
-2>  ViagensOnlineMvc -> C:\Users\no4807\source\repos\ImpactAspNet\ViagensOnlineMvc\bin\ViagensOnlineMvc.dll
-========== Compilar: 2 com êxito, 0 com falha, 14 atualizados, 0 ignorados ==========
+3>------ Compilação iniciada: Projeto: Pessoal.Database, Configuração: Debug Any CPU ------
+3>		Pessoal.Database -> C:\Users\no4807\source\repos\ImpactAspNet\Pessoal.Database\bin\Debug\Pessoal.Database.dll
+3>		Pessoal.Database -> C:\Users\no4807\source\repos\ImpactAspNet\Pessoal.Database\bin\Debug\Pessoal.Database.dacpac
+2>  Loja.Repositorio.SqlServerTests -> C:\Users\no4807\source\repos\ImpactAspNet\Loja.Repositorio.SqlServerTests\bin\Debug\Loja.Repositorio.SqlServerTests.dll
+========== Compilar: 3 com êxito, 0 com falha, 23 atualizados, 0 ignorados ==========
