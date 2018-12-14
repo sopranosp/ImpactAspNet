@@ -16,12 +16,16 @@ namespace Loja.Dominio
 
         public int Estoque { get; set; }
 
+        public bool Ativo { get; set; }
 
-        public Categoria Categoria { get; set; }
 
-        public List<Pedido> Pedidos { get; set; }
+        public virtual Categoria Categoria { get; set; }
 
-        public ProdutoImagem ProdutoImagem { get; set; }
+        public virtual List<Pedido> Pedidos { get; set; }
+
+        public virtual ProdutoImagem ProdutoImagem { get; set; }
+
+        
 
     }
 }

@@ -9,7 +9,7 @@
 
         public string ContentType { get; set; }
 
-        public Produto Produto { get; set; }
+        public virtual Produto Produto { get; set; }
 
 
     }

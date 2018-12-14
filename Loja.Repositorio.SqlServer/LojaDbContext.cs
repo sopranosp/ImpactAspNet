@@ -1,4 +1,5 @@
 ﻿using Loja.Dominio;
+using Loja.Repositorio.SqlServer.Migrations;
 using Loja.Repositorio.SqlServer.ModelConfiguration;
 using Loja.Repositorios.SqlServer.ModelConfiguration;
 using System;
@@ -17,7 +18,9 @@ namespace Loja.Repositorio.SqlServer
         public LojaDbContext() :base("lojaSqlServer")
         {
 
+            //Database.SetInitializer(new LojaDbInicializer());
 
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LojaDbContext,Configuration>());
 
         }
 
@@ -53,5 +56,7 @@ namespace Loja.Repositorio.SqlServer
 
 
         }
+
+        public System.Data.Entity.DbSet<Loja.Dominio.ProdutoImagem> ProdutoImagems { get; set; }
     }
 }

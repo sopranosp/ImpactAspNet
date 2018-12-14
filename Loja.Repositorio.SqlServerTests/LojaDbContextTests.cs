@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Loja.Repositorio.SqlServer;
+using Loja.Repositorios.SqlServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using Loja.Dominio;
+using Loja.Repositorio.SqlServer;
+using System.Data.Entity;
 
-namespace Loja.Repositorio.SqlServer.Tests
+namespace Loja.Repositorios.SqlServer.Tests
 {
     [TestClass()]
     public class LojaDbContextTests
@@ -26,92 +28,112 @@ namespace Loja.Repositorio.SqlServer.Tests
         }
 
         [TestMethod()]
-        public void LojaDbContextTest()
+        public void InserirCategoriaTeste()
         {
-            Assert.Fail();
-        }
+            var categoria = new Categoria();
+            categoria.Nome = "Informática";
 
-        [TestMethod()]
-        public void InserirCategoriaTest()
-        {
-
-
-            var papelaria = new Categoria();
-            papelaria.Nome = "Papelaria";
-            db.Categorias.Add(papelaria);
+            db.Categorias.Add(categoria);
             db.SaveChanges();
-
-            //Assert.Fail();
         }
 
-
-
-        [TestMethod()]
-        public void InserirProdutoTest()
+        [TestMethod]
+        public void InserirProdutoTeste()
         {
-
-
             var produto = new Produto();
+
             produto.Categoria = db.Categorias.Find(1);
-            produto.Nome = "Lápis Evolution Shapes";
-            produto.Estoque = 100;
-            produto.Preco = 1.23m;
+            produto.Estoque = 3;
+            produto.Nome = "Bic";
+            produto.Preco = 22.03m;
+
             db.Produtos.Add(produto);
             db.SaveChanges();
-
-            //Assert.Fail();
         }
 
-
-
-
-        public void InserirProdutoComCategoriaTest()
+        [TestMethod]
+        public void InserirProdutoComNovaCategoriaTeste()
         {
-
-
             var produto = new Produto();
+
             produto.Categoria = new Categoria { Nome = "Perfumaria" };
-          //  produto.Categoria.Nome = "Perfumaria";
+            //produto.Categoria.Nome = "Perfumaria";
+            produto.Estoque = 8;
             produto.Nome = "Barbeador";
-            produto.Estoque = 100;
-            produto.Preco = 1.23m;
+            produto.Preco = 22.08m;
+
             db.Produtos.Add(produto);
             db.SaveChanges();
-
-            //Assert.Fail();
         }
 
-
-        public void EditarProdutoTest()
+        [TestMethod]
+        public void EditarProdutoTeste()
         {
-
-
             var produto = db.Produtos
-                .Where(p => p.Nome.Contains("Lápis Evolution Shapes"))
+                .Where(p => p.Nome.Contains("Bic"))
                 .FirstOrDefault();
-        
-          
-            produto.Nome = "Caneta";
-            produto.Estoque = 200;
-            produto.Preco = 2.23m;
-            
-            db.SaveChanges();
 
-            //Assert.Fail();
+            produto.Categoria = db.Categorias.Find(2);
+            produto.Estoque = 23;
+            produto.Nome = "Perfume";
+            produto.Preco = 22.23m;
+
+            db.SaveChanges();
         }
 
-
-        public void ExcluirProdutoTest()
+        [TestMethod]
+        public void ExcluirProdutoTeste()
         {
+            var produtos = db.Produtos
+                .Where(p => p.Categoria.Nome == "Informática")
+                .ToList();
 
+            db.Produtos.RemoveRange(produtos);
 
-            var produto = db.Produtos.Find(1);
-            db.Produtos.Remove(produto);
             db.SaveChanges();
 
-           /// Assert.IsFalse(db.Produtos.Any()p => );
+            Assert.IsFalse(db.Produtos
+                .Any(p => p.Categoria.Nome == "Informática"));
         }
 
+        [TestMethod]
+        public void LazyLoadDesligadoTeste()
+        {
+            var produto = db.Produtos.SingleOrDefault(p => p.Id == 2);
+             Assert.IsNull(produto.Categoria);
+        }
+
+
+        [TestMethod]
+        public void IncludeTeste()
+        {
+            var produto = db.Produtos.Include(p => p.Categoria)
+                .SingleOrDefault(p => p.Id == 2);
+
+            Console.WriteLine(produto.Categoria.Nome);
+        }
+
+        [TestMethod]
+        [DataRow(3)]
+        public void QueryableTeste(int estoque)
+        {
+            var query = db.Produtos.Where(p => p.Preco > 10);
+
+
+            if (estoque > 0)
+            {
+                query = query.Where(p => p.Estoque >= estoque);
+            }
+
+
+            query.OrderBy(p => p.Preco);
+
+
+            var primeiro = query.FirstOrDefault();
+            //var unico = query.SingleOrDefault();
+            var ultimo = query.AsEnumerable().LastOrDefault();
+            var todos = query.ToList();
+        }
 
     }
 }
