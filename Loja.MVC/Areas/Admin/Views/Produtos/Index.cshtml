@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Loja.Dominio.Produto>
+﻿@model IEnumerable<Loja.MVC.Areas.Admin.Models.ProdutoViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,11 +12,12 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProdutoImagem.ContentType)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoriaNome)
+        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Preco)
         </th>
@@ -32,10 +33,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ProdutoImagem.ContentType)
+            @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Nome)
+            @Html.DisplayFor(modelItem => item.CategoriaNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriaId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Preco)
