@@ -132,7 +132,9 @@ namespace Loja.MVC.Areas.Admin.Controllers
         [ActionName("Categoria")]
         public ActionResult ObterProdutoPorCategoria(int categoriaid)
         {
-            var produtos = db.Produtos.Where(p => p.Categoria.Id == categoriaid).ToList();
+            var produtos = db.Produtos.Where(p => p.Categoria.Id == categoriaid)
+                .Select(P=> new { P.Nome, P.Preco, P.Estoque })
+                .ToList();
             return Json(produtos,JsonRequestBehavior.AllowGet);
 
         }
