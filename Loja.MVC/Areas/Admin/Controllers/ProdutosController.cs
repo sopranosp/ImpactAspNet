@@ -22,8 +22,10 @@ namespace Loja.MVC.Areas.Admin.Controllers
         // GET: Admin/Produtos
         public ActionResult Index()
         {
-           // var Produtos = db.Produtos.Include(p => p.ProdutoImagem);
+            // var Produtos = db.Produtos.Include(p => p.ProdutoImagem);
 
+
+            throw new Exception("Teste MARIA MARIA");
             return View(Map.Mapear (db.Produtos.ToList()));
         }
 

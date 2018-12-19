@@ -29,6 +29,24 @@ namespace Northwind.WebApi.Controllers
             return await db.Products.ToListAsync();
         }
 
+        [Route("api/products/{productId}/supplier")]
+        public async Task<IHttpActionResult> GetProductSupplier(int productId)
+        {
+            var fornecedor = await db.Products
+                .Include(p=> p.Suppliers)
+                .Where(p => p.ProductID == productId)
+                .Select(p => p.Suppliers)
+                .SingleOrDefaultAsync();
+
+            if (fornecedor == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(fornecedor);
+        }
+
+
         // GET: api/Products/5
         [ResponseType(typeof(Products))]
         public async Task<IHttpActionResult> GetProducts(int id)
