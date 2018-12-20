@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using Loja.Dominio;
@@ -19,17 +20,20 @@ namespace Loja.MVC.Areas.Admin.Controllers
 
         private readonly ProdutoMapeamento Map = new ProdutoMapeamento();
 
+
+        [AllowAnonymous]
         // GET: Admin/Produtos
         public ActionResult Index()
         {
             // var Produtos = db.Produtos.Include(p => p.ProdutoImagem);
 
 
-            throw new Exception("Teste MARIA MARIA");
-            return View(Map.Mapear (db.Produtos.ToList()));
+            //throw new Exception("Teste MARIA MARIA");
+            return View(Map.Mapear(db.Produtos.ToList()));
         }
 
         // GET: Admin/Produtos/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,14 +45,14 @@ namespace Loja.MVC.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(Map.Mapear(produto));
         }
 
         // GET: Admin/Produtos/Create
         public ActionResult Create()
         {
             //ViewBag.Id = new SelectList(db.ProdutoImagems, "ProdutoId", "ContentType");
-            return View(Map.Mapear(new Produto(),db.Categorias.ToList()));
+            return View(Map.Mapear(new Produto(), db.Categorias.ToList()));
         }
 
         // POST: Admin/Produtos/Create
@@ -60,9 +64,9 @@ namespace Loja.MVC.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var produto = Map.Mapear(viewModel,db);
+                var produto = Map.Mapear(viewModel, db);
 
-                db.Produtos.Add( produto);
+                db.Produtos.Add(produto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -74,6 +78,14 @@ namespace Loja.MVC.Areas.Admin.Controllers
         // GET: Admin/Produtos/Edit/5
         public ActionResult Edit(int? id)
         {
+
+            if (((ClaimsIdentity)User.Identity)
+                    .HasClaim(c => c.Type == "Produtos" && c.Value.Contains("|Edit|")))
+
+            {
+                RedirectToAction("Login", "Account");
+
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -84,7 +96,7 @@ namespace Loja.MVC.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             ViewBag.Id = new SelectList(db.ProdutoImagems, "ProdutoId", "ContentType", produto.Id);
-            return View(produto);
+            return View(Map.Mapear(produto,db.Categorias.ToList()));
         }
 
         // POST: Admin/Produtos/Edit/5
@@ -103,7 +115,8 @@ namespace Loja.MVC.Areas.Admin.Controllers
             ViewBag.Id = new SelectList(db.ProdutoImagems, "ProdutoId", "ContentType", produto.Id);
             return View(produto);
         }
-
+        [Authorize(Roles = "Master")]
+        [Authorize(Roles = "Gerente, Admin")]
         // GET: Admin/Produtos/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -116,7 +129,7 @@ namespace Loja.MVC.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(produto);
+            return View(Map.Mapear(produto));
         }
 
         // POST: Admin/Produtos/Delete/5
@@ -135,9 +148,9 @@ namespace Loja.MVC.Areas.Admin.Controllers
         public ActionResult ObterProdutoPorCategoria(int categoriaid)
         {
             var produtos = db.Produtos.Where(p => p.Categoria.Id == categoriaid)
-                .Select(P=> new { P.Nome, P.Preco, P.Estoque })
+                .Select(P => new { P.Nome, P.Preco, P.Estoque })
                 .ToList();
-            return Json(produtos,JsonRequestBehavior.AllowGet);
+            return Json(produtos, JsonRequestBehavior.AllowGet);
 
         }
 

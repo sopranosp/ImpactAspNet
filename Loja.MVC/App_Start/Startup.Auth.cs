@@ -34,7 +34,7 @@ namespace Loja.MVC
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Permite que o aplicativo armazene temporariamente as informações do usuário quando ele estiver verificando o segundo fator no processo de autenticação de dois fatores.
@@ -58,11 +58,11 @@ namespace Loja.MVC
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "645557581821-bq2rqg337dpv7j5ip3a9dmc5p3j6rmos.apps.googleusercontent.com",
+                ClientSecret = "_vKykwr9YVWvcHSW17YJkFaK"
+            });
         }
     }
 }
