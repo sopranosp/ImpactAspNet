@@ -52,6 +52,7 @@ namespace ViagensOnline.Mvc.Controllers
 
         // GET: Destinos/Details/5
         // GET: Destinos/Details?id=5
+        [Authorize(Roles ="Master")]
         public ActionResult Details(int? id)
         {
             if (id == null)

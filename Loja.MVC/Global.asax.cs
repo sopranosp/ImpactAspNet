@@ -19,5 +19,12 @@ namespace Loja.MVC
             log4net.Config.XmlConfigurator.Configure();
 
         }
+
+
+        protected void Application_AcquireRequestState()
+        {
+          //  var cultura = new CultureHelper(Obter);
+
+        }
     }
 }

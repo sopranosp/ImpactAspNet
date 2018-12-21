@@ -12,6 +12,7 @@ namespace ViagensOnline.Repositorios.SqlServer
     public class ViagensOnlineDbContext : DbContext
     {
 
+        // DbContext é um Unit of Work.
         public ViagensOnlineDbContext() : base("viagensOnlineSqlServer")
         {
         
@@ -24,6 +25,12 @@ namespace ViagensOnline.Repositorios.SqlServer
 
         }
 
+        public DbSet<Usuario> Usuarios
+        {
+            get;
+            set;
+
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             /// base.OnModelCreating(modelBuilder);

@@ -47,6 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201812062312094_InitialCreate.cs" />
+    <Compile Include="Migrations\201812062312094_InitialCreate.Designer.cs">
+      <DependentUpon>201812062312094_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812202200524_Usuario.cs" />
+    <Compile Include="Migrations\201812202200524_Usuario.Designer.cs">
+      <DependentUpon>201812202200524_Usuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViagensOnlineDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,6 +68,14 @@
       <Project>{791784E1-8F90-45A3-8ACE-D7EEC18EA939}</Project>
       <Name>ViagensOnline.Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812062312094_InitialCreate.resx">
+      <DependentUpon>201812062312094_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812202200524_Usuario.resx">
+      <DependentUpon>201812202200524_Usuario.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

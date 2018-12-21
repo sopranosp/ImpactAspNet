@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Loja.Mvc.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using System.Web;
 using System.Web.Mvc;
 
@@ -26,5 +28,13 @@ namespace Loja.MVC.Controllers
 
             return View();
         }
+
+        public ActionResult DefinirLinguagem(string linguagem)
+        {
+            Response.Cookies[Cookie.LinguagemSelecionada].Value = linguagem;
+
+            return Redirect(linguagem);
+        }
+
     }
 }

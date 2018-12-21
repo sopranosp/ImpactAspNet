@@ -24,7 +24,10 @@ namespace ViagensOnlineMvc
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/flag.css",
                       "~/Content/site.css"));
+
+            
         }
     }
 }
